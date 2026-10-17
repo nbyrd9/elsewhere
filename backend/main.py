@@ -4,6 +4,7 @@ from fastapi import FastAPI, HTTPException, Query
 import os
 from dotenv import load_dotenv
 from recommendations import recommend_attractions
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
 
@@ -15,6 +16,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=False,
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def home():
@@ -78,7 +86,7 @@ async def get_weather(
             "temperature": weather["temperature_2m"],
             "weather_code": weather["weather_code"]
         }
-        
+
 @app.get("/attractions")
 async def get_attractions(
     latitude: float = Query(ge=-90, le=90),

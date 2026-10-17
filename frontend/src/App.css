@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #25382e;
+  background: #f8f7f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.site-header {
+  height: 92px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 7%;
+  border-bottom: 1px solid #e5e5dc;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #25382e;
+  text-decoration: none;
+  letter-spacing: -1.5px;
+}
+
+.logo span {
+  color: #b68960;
+}
+
+.header-tagline {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 650px;
+}
+
+.hero-content {
+  padding: 90px 12% 45px 14%;
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #b68960;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(60px, 6vw, 100px);
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: -3px;
+  margin: 30px 0;
+}
+
+.hero h1 em {
+  color: #a77d59;
+  font-weight: 400;
+}
+
+.hero-description {
+  color: #777d75;
+  line-height: 1.9;
+  max-width: 430px;
+  font-size: 15px;
+}
+
+.search-form {
+  margin-top: 45px;
+}
+
+.search-form label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.search-container {
+  display: flex;
+  background: white;
+  padding: 7px;
+  border: 1px solid #e3e4dc;
+  max-width: 480px;
+}
+
+.search-container input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  padding: 14px;
+  background: transparent;
+  color: #25382e;
+}
+
+.search-container button {
+  background: #25382e;
+  color: white;
+  border: none;
+  padding: 15px 22px;
+  white-space: nowrap;
+}
+
+.search-container button:hover {
+  background: #3f5a49;
+}
+
+.search-container button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.hero-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 60px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #b68960;
+}
+
+.hero-image {
+  background-image:
+    linear-gradient(to bottom, transparent 60%, rgba(0,0,0,.45)),
+    url('https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 650px;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 45px;
+  left: 45px;
+  right: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  color: white;
+}
+
+.image-overlay span {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.image-overlay p {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  font-style: italic;
+}
+
+.status-section {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.status-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 35px;
+  font-weight: 400;
+}
+
+.status-section p {
+  color: #777d75;
+}
+
+.spinner {
+  width: 35px;
+  height: 35px;
+  border: 2px solid #ddd;
+  border-top-color: #25382e;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-section button {
+  background: transparent;
+  border: 1px solid #25382e;
+  padding: 12px 25px;
+}
+
+.results-section {
+  padding: 100px 7%;
+  max-width: 1500px;
+  margin: auto;
+}
+
+.results-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(45px, 5vw, 70px);
+  font-weight: 400;
+  margin: 15px 0 5px;
+}
+
+.results-header h2 em {
+  color: #a77d59;
+}
+
+.results-header > p {
+  color: #777d75;
+}
+
+.weather-banner {
+  margin: 50px 0 100px;
+  background: #e8e9df;
+  padding: 40px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.weather-banner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 65px;
+  font-weight: 400;
+  margin: 15px 0;
+}
+
+.weather-banner p {
+  color: #777d75;
+  font-size: 13px;
+}
+
+.weather-symbol {
+  font-size: 65px;
+  color: #b68960;
+}
+
+.recommendations-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 45px;
+}
+
+.recommendations-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 45px;
+  margin: 15px 0 0;
+}
+
+.result-count {
+  color: #777d75;
+  font-size: 12px;
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.attraction-card {
+  background: white;
+  padding: 30px;
+  border: 1px solid #eaeae3;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-number {
+  color: #b68960;
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+}
+
+.card-content {
+  margin-top: 25px;
+}
+
+.card-category {
+  color: #b68960;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.card-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 400;
+  margin: 12px 0;
+}
+
+.card-address {
+  color: #777d75;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.recommendation-reason {
+  border-top: 1px solid #eee;
+  margin-top: 25px;
+  padding-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.recommendation-reason span {
+  color: #b68960;
+}
+
+.recommendation-reason p {
+  color: #777d75;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px;
+  background: white;
+}
+
+.site-footer {
+  padding: 45px 7%;
+  background: #25382e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer > span:first-child {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+}
+
+.site-footer p,
+.site-footer > span:last-child {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    padding: 70px 7%;
+    min-height: 550px;
+  }
+
+  .hero-image {
+    min-height: 400px;
+  }
+
+  .attractions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    height: 75px;
+  }
+
+  .header-tagline {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 65px;
+  }
+
+  .attractions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendations-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .recommendations-heading h2 {
+    font-size: 35px;
+  }
+
+  .weather-banner {
+    padding: 25px;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
