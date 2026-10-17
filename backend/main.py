@@ -42,50 +42,69 @@ def health_check():
 async def get_weather(
     city: str = Query(min_length=2, max_length=100)
 ):
-    async with httpx.AsyncClient(timeout=10.0) as client:
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
 
-        # Step 1: Convert city name into coordinates
-        geo_response = await client.get(
-            "https://geocoding-api.open-meteo.com/v1/search",
-            params={
-                "name": city,
-                "count": 1
-            }
-        )
-        geo_response.raise_for_status()
-
-        locations = geo_response.json().get("results", [])
-
-        if not locations:
-            raise HTTPException(
-                status_code=404,
-                detail="City not found"
+            # Convert the city name into coordinates
+            geo_response = await client.get(
+                "https://geocoding-api.open-meteo.com/v1/search",
+                params={
+                    "name": city,
+                    "count": 1
+                }
             )
+            geo_response.raise_for_status()
 
-        location = locations[0]
+            locations = geo_response.json().get("results", [])
 
-        # Step 2: Retrieve weather using coordinates
-        weather_response = await client.get(
-            "https://api.open-meteo.com/v1/forecast",
-            params={
+            if not locations:
+                raise HTTPException(
+                    status_code=404,
+                    detail="Destination not found. Try another city."
+                )
+
+            location = locations[0]
+
+            # Retrieve current weather
+            weather_response = await client.get(
+                "https://api.open-meteo.com/v1/forecast",
+                params={
+                    "latitude": location["latitude"],
+                    "longitude": location["longitude"],
+                    "current": "temperature_2m,weather_code",
+                    "timezone": "auto"
+                }
+            )
+            weather_response.raise_for_status()
+
+            weather = weather_response.json()["current"]
+
+            return {
+                "city": location["name"],
+                "country": location["country"],
                 "latitude": location["latitude"],
                 "longitude": location["longitude"],
-                "current": "temperature_2m,weather_code",
-                "timezone": "auto"
+                "temperature": weather["temperature_2m"],
+                "weather_code": weather["weather_code"]
             }
-        )
-        weather_response.raise_for_status()
 
-        weather = weather_response.json()["current"]
+    except httpx.HTTPStatusError as exc:
+        if exc.response.status_code == 429:
+            raise HTTPException(
+                status_code=503,
+                detail="Weather service is temporarily rate-limited. Please try again later."
+            ) from exc
 
-        return {
-            "city": location["name"],
-            "country": location["country"],
-            "latitude": location["latitude"],
-            "longitude": location["longitude"],
-            "temperature": weather["temperature_2m"],
-            "weather_code": weather["weather_code"]
-        }
+        raise HTTPException(
+            status_code=502,
+            detail="Unable to retrieve weather information."
+        ) from exc
+
+    except httpx.RequestError as exc:
+        raise HTTPException(
+            status_code=502,
+            detail="Weather service is temporarily unavailable."
+        ) from exc
 
 @app.get("/attractions")
 async def get_attractions(
