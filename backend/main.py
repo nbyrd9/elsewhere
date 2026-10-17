@@ -72,6 +72,7 @@ async def get_weather(
                     "latitude": location["latitude"],
                     "longitude": location["longitude"],
                     "current": "temperature_2m,weather_code",
+                    "temperature_unit": "fahrenheit",
                     "timezone": "auto"
                 }
             )

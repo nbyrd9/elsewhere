@@ -139,7 +139,7 @@ function App() {
                 <span className="weather-label">
                   CURRENT CONDITIONS
                 </span>
-                <h3>{data.temperature}°C</h3>
+                <h3>{Math.round(data.temperature)}°F</h3>
                 <p>
                   Recommendations inspired by today's weather.
                 </p>
