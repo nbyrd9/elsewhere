@@ -59,7 +59,7 @@ function App() {
             <h1>
               Find your
               <br />
-              <em>somewhere.</em>
+              <em>elsewhere.</em>
             </h1>
 
             <p className="hero-description">
