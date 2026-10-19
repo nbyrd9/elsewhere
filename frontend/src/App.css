@@ -150,8 +150,8 @@ button {
 
 .hero-image {
   background-image:
-    linear-gradient(to bottom, transparent 60%, rgba(0,0,0,.45)),
-    url('https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1400');
+    linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.45)),
+    url('/amalfi-coast.webp');
   background-size: cover;
   background-position: center;
   position: relative;
