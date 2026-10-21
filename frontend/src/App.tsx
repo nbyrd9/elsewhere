@@ -4,6 +4,7 @@ import {
   type RecommendationsResponse,
 } from "./services/api";
 import "./App.css";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [city, setCity] = useState("");
@@ -209,7 +210,9 @@ function App() {
         <p>Made for the curious.</p>
         <span>© 2026 ELSEWHERE</span>
       </footer>
+      <Analytics />
     </div>
+    
   );
 }
 
