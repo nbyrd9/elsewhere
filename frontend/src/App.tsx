@@ -1,4 +1,5 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import { track } from "@vercel/analytics";
 import {
   getRecommendations,
   type RecommendationsResponse,
@@ -12,6 +13,25 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+  async function trackRegion() {
+    try {
+      const response = await fetch("/api/region");
+
+      if (!response.ok) return;
+
+      const { region } = await response.json();
+
+      track("region_view", {
+        region: region ?? "unknown",
+      });
+    } catch (error) {
+      console.error("Unable to track visitor region:", error);
+    }
+  }
+
+  trackRegion();
+}, []);
   async function handleSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
