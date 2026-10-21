@@ -98,7 +98,7 @@ function App() {
 
           <div className="hero-image">
             <div className="image-overlay">
-              <span>01 / THE WORLD IS WAITING</span>
+              <span>THE WORLD IS WAITING</span>
               <p>Go somewhere wonderful.</p>
             </div>
           </div>

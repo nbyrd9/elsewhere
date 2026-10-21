@@ -1,19 +1,8 @@
-# Python
 backend/.venv/
+backend/.env
+frontend/.env.local
+frontend/node_modules/
+frontend/dist/
 __pycache__/
-*.pyc
-
-# Environment variables
-.env
-.env.*
-!.env.example
-
-# Testing
 .pytest_cache/
-
-# Node
-node_modules/
-dist/
-
-# macOS
 .DS_Store
