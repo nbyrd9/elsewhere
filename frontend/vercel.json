@@ -6,7 +6,7 @@
     },
     {
       "source": "/api/:path*",
-      "destination": "https://8z90x1qgcod8li-8000.proxy.runpod.net/:path*"
+      "destination": "https://8z90x1qgcod8ii-8000.proxy.runpod.net/:path*"
     }
   ]
 }
